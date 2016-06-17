@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">Stock Hawk</string>
+  <string name="app_name" translatable="false">Stock Hawk</string>
 
   <string name="action_example">Example action</string>
 
@@ -11,4 +11,9 @@
   <string name="input_prefill"></string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
   <string name="no_stock_error">Stock Information not available.</string>
+  <string name="bid_price" translatable="false">1000.00</string>
+  <string name="bid_change" translatable="false">100%</string>
+  <string name="stock_symbol" translatable="false">GOOG</string>
+  <string name="new_stock">Add new stock</string>
+  <string name="stock_is_saved">This stock is already saved!</string>
 </resources>
