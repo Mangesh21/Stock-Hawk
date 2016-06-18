@@ -59,7 +59,7 @@ public class DetailStockActivity extends AppCompatActivity implements
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data.getCount() != 0) {
             displayChart(data);
-          } else {
+        } else {
             Toast.makeText(this, getString(R.string.no_stock_error), Toast.LENGTH_SHORT).show();
         }
     }
@@ -94,6 +94,7 @@ public class DetailStockActivity extends AppCompatActivity implements
                 .setThickness(4)
                 .setDashed(new float[]{10f, 10f});
 
+        float step = maximumPrice/10;
 
         lineChartView.setBorderSpacing(Tools.fromDpToPx(15))
                 .setYLabels(AxisController.LabelPosition.OUTSIDE)
@@ -101,14 +102,12 @@ public class DetailStockActivity extends AppCompatActivity implements
                 .setLabelsColor(Color.parseColor("#6a84c3"))
                 .setXAxis(false)
                 .setYAxis(false)
-                .setAxisBorderValues(Math.round(minimumPrice - 10f), Math.round(maximumPrice + 10f))
+                .setAxisBorderValues(Math.round(minimumPrice - step), Math.round(maximumPrice + step))
                 .addData(lineSet);
 
         Animation anim = new Animation();
-
         lineChartView.show(anim);
     }
-
 
 
     @Override
