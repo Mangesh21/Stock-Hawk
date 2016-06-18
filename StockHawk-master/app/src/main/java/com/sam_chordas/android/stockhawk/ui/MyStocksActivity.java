@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -65,6 +66,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         isConnected = activeNetwork != null &&
                 activeNetwork.isConnectedOrConnecting();
         setContentView(R.layout.activity_my_stocks);
+
+        final TextView txtNoNetWork = (TextView) findViewById(R.id.txtinterneterror);
         // The intent service is for executing immediate pulls from the Yahoo API
         // GCMTaskService can only schedule tasks, they cannot execute immediately
         mServiceIntent = new Intent(this, StockIntentService.class);
@@ -73,8 +76,9 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             mServiceIntent.putExtra("tag", "init");
             if (isConnected) {
                 startService(mServiceIntent);
+                txtNoNetWork.setVisibility(View.GONE);
             } else {
-                networkToast();
+                txtNoNetWork.setVisibility(View.VISIBLE);
             }
         }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -101,6 +105,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
             @Override
             public void onClick(View v) {
                 if (isConnected) {
+                    txtNoNetWork.setVisibility(View.GONE);
                     new MaterialDialog.Builder(mContext).title(R.string.symbol_search)
                             .content(R.string.content_test)
                             .inputType(InputType.TYPE_CLASS_TEXT)
@@ -129,7 +134,8 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                             })
                             .show();
                 } else {
-                    networkToast();
+                    txtNoNetWork.setVisibility(View.VISIBLE);
+                    //networkToast();
                 }
 
             }

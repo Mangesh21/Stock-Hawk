@@ -12,6 +12,7 @@
       android:layout_height="match_parent"
       />
 
+
   <com.melnykov.fab.FloatingActionButton
       android:id="@+id/fab"
       android:layout_width="wrap_content"
@@ -28,4 +29,12 @@
       fab:layout_anchorGravity="bottom | end"
       android:contentDescription="@string/new_stock"
       />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/network_toast"
+      android:id="@+id/txtinterneterror"
+      android:layout_gravity="center"/>
 </FrameLayout>
